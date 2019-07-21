@@ -7,7 +7,7 @@ Open windows powershell.exe (right click on the windows button on the taskbar)
 
 ```PowerShell
 ##Sets the excution policy to allow you to run the scripts for this session (required everytime)
-Set-ExecutionPolicy -Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
 
 ##Import the modules
 ##Change file location to where you have the files saved (required everytime)
@@ -23,7 +23,7 @@ Sorts the screenshots from the switch into a more usable folder structure.
 
 ```PowerShell
 ##Sets the excution policy to allow you to run the scripts for this session (required everytime)
-Set-ExecutionPolicy -Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
 
 ##Import the modules
 ##Change file location to where you have the files saved (required everytime)
