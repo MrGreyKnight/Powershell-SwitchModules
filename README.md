@@ -48,3 +48,9 @@ Folder Structure
 --------------Saved File
 
 ```
+##game_ids.json
+
+Json list of games with their ID's which the switch uses as part of the filename.
+Originally from https://github.com/RenanGreca/Switch-Screenshots 
+
+Please feel free to commit updates to add games, would love the contribution.
