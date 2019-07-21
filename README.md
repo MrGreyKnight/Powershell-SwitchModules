@@ -1,7 +1,7 @@
 # Powershell-SwitchModules (Windows only powershell 5)
 This is a general repository for powershell scripts I create for use in switch content
 
-## How to use
+## How to use | Global Import Coming soon
 
 Open windows powershell.exe (right click on the windows button on the taskbar)
 
@@ -19,6 +19,16 @@ This will import the modules and make them available for use during the powershe
 
 ##Expand-SwitchPhotoLibrary
 Sorts the screenshots from the switch into a more usable folder structure.
+
+
+```PowerShell
+##Sets the excution policy to allow you to run the scripts for this session (required everytime)
+Set-ExecutionPolicy - Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
+
+##Import the modules
+##Change file location to where you have the files saved (required everytime)
+Import-Module 'C:\Users\GN000001\Downloads\Git\Powershell-Switch-Modules\Expand-SwitchPhotoLibrary\Expand-SwitchPhotoLibrary.ps1'
+```
 
 ```PowerShell
 
