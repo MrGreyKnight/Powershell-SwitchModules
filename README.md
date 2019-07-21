@@ -17,7 +17,7 @@ Import-Module 'C:\Users\GN000001\Downloads\Git\Powershell-Switch-Modules\'
 This will import the modules and make them available for use during the powershell window is open.
 
 
-##Expand-SwitchPhotoLibrary
+## Expand-SwitchPhotoLibrary
 Sorts the screenshots from the switch into a more usable folder structure.
 
 
