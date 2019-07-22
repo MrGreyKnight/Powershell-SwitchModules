@@ -23,13 +23,16 @@ function Expand-SwitchPhotoLibrary
     (
         [string]$source,
         [string]$destination,
-        [string]$gameListfile
+        [string]$gameListfile,
+        [switch]$datefolder
     )
 
-    if(!(Test-Path $gameListfile)) {
+    if(!(Test-Path $gameListfile)) 
+    {
         Write-Error -Message 'Failed to find game_id file.'
         Write-Error -Message 'Not found at stated location : ' + $gameListfile;
-    } else {
+    } else 
+    {
         
         $jsonGameId = (Get-Content $gameListfile -Raw) | ConvertFrom-Json
 
@@ -41,10 +44,12 @@ function Expand-SwitchPhotoLibrary
 
             $gameName = $jsonGameId.psobject.properties | Where-Object { $_.Name -eq $gameId }
 
-            if($null -eq $gameName.value) {
+            if($null -eq $gameName.value) 
+            {
                 $gameFolder = "Unknown_game"
                 Write-OutPut "Unknown Game Found, Please if know update the git repo so this doesnt happen for other users. $($file.name)"
-            } else {
+            } else 
+            {
                 $gameFolder = $gameName.value
             }
 
@@ -58,8 +63,13 @@ function Expand-SwitchPhotoLibrary
             {
                 $destination += '\'
             }
-
-            $expandfinal = $destination + $gameFolder + '\' + $extension + '\' + $year + '\' + $Month + '\' + $day
+            if($datefolder) 
+            {
+                $expandfinal = $destination + [Text.Encoding]::ASCII.GetString([Text.Encoding]::GetEncoding("Cyrillic").GetBytes($gameFolder)) + '\' + $extension + '\' + $year + '\' + $Month + '\' + $day
+            } else 
+            {
+                $expandfinal = $destination + [Text.Encoding]::ASCII.GetString([Text.Encoding]::GetEncoding("Cyrillic").GetBytes($gameFolder)) + '\' + $extension + '\' + $year + '-' + $Month + '-' + $day
+            }
             If(!(Test-Path $expandfinal))
             {
                 New-Item -ItemType Directory -Force -Path $expandfinal | Out-Null
