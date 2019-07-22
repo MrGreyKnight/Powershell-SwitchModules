@@ -36,9 +36,21 @@ Expand-SwitchPhotoLibrary -source 'Directory screenshots are saved' -destination
 ```
 This will go through and sort your screenshots or videos
 
+### Standard folder structure
 ```
-Folder Structure
+--Destination Folder
+----Game
+------FileType
+--------Year-Month-Day
+----------Saved File
+```
 
+### -datefolder Parameter
+You can add the dateFolder parameter to create the following folder structure instead of the standard one.
+```powershell
+Expand-SwitchPhotoLibrary -source 'Directory screenshots are saved' -destination 'Directory you want them moved to when they are sorted' -gameListFile 'Directory game_ids.json is saved' -datefolder
+```
+```
 --Destination Folder
 ----Game
 ------FileType
@@ -46,7 +58,6 @@ Folder Structure
 ----------Month
 ------------Day
 --------------Saved File
-
 ```
 ##game_ids.json
 
