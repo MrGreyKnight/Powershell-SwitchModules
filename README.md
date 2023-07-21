@@ -32,7 +32,7 @@ Import-Module 'C:\Users\GN000001\Downloads\Git\Powershell-Switch-Modules\Expand-
 
 ```PowerShell
 ## To Run the Process run this command:
-Expand-SwitchPhotoLibrary -source 'Directory screenshots are saved' -destination 'Directory you want them moved to when they are sorted' -gameListFile 'Directory game_ids.json is saved'
+Expand-SwitchPhotoLibrary -source 'Directory screenshots are saved' -destination 'Directory you want them moved to when they are sorted' -gameListFile 'Directory game_ids.json is saved\game_ids.json'
 ```
 This will go through and sort your screenshots or videos
 
