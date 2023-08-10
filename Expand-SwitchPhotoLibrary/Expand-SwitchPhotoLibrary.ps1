@@ -17,8 +17,7 @@
     .PARAMETER jsonIdLocation
     Json file location containing all the game name file related to their ids
 #>
-function Expand-SwitchPhotoLibrary
-{
+function Expand-SwitchPhotoLibrary {
     param
     (
         [string]$source,
@@ -26,42 +25,43 @@ function Expand-SwitchPhotoLibrary
         [string]$gameListfile
     )
 
-    if(!(Test-Path $gameListfile)) {
+    if (!(Test-Path $gameListfile)) {
         Write-Error -Message 'Failed to find game_id file.'
         Write-Error -Message 'Not found at stated location : ' + $gameListfile;
-    } else {
+    }
+    else {
         
         $jsonGameId = (Get-Content $gameListfile -Raw) | ConvertFrom-Json
 
         $screenshots = get-childitem -Path $source -File -recurse
 
-        foreach ($file in $screenshots)
-        {
-            $gameId = [regex]::matches($file.name,"\-(.*?)\.").Groups[1].Value
+        foreach ($file in $screenshots) {
+            $gameId = [regex]::matches($file.name, "\-(.*?)\.").Groups[1].Value
 
             $gameName = $jsonGameId.psobject.properties | Where-Object { $_.Name -eq $gameId }
 
-            if($null -eq $gameName.value) {
+            if ($null -eq $gameName.value) {
                 $gameFolder = "Unknown_game"
                 Write-OutPut "Unknown Game Found, Please if know update the git repo so this doesnt happen for other users. $($file.name)"
-            } else {
+            }
+            else {
                 $gameFolder = $gameName.value
             }
 
-            $year  = $file.name.substring(0, 4)
+            Write-Output $file.name;
+
+            $year = $file.name.substring(0, 4)
             $month = $file.name.substring(4, 2)
-            $day   = $file.name.substring(6, 2)
+            $day = $file.name.substring(6, 2)
 
             $extension = $file.Extension.substring(1)
 
-            if ($destination -notmatch '.+?\\$')
-            {
+            if ($destination -notmatch '.+?\\$') {
                 $destination += '\'
             }
 
             $expandfinal = $destination + $gameFolder + '\' + $extension + '\' + $year + '\' + $Month + '\' + $day
-            If(!(Test-Path $expandfinal))
-            {
+            If (!(Test-Path $expandfinal)) {
                 New-Item -ItemType Directory -Force -Path $expandfinal | Out-Null
             }
             
